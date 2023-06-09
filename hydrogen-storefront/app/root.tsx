@@ -9,11 +9,14 @@ import {
 } from '@remix-run/react';
 import type {Shop} from '@shopify/hydrogen/storefront-api-types';
 import styles from './styles/app.css';
+import tailwind from './styles/tailwind-build.css';
 import favicon from '../public/favicon.svg';
 import {Layout} from './components/Layout';
+import Login from './components/LoginPage';
 
 export const links: LinksFunction = () => {
   return [
+    {rel: 'stylesheet', href: tailwind},
     {rel: 'stylesheet', href: styles},
     {
       rel: 'preconnect',
@@ -46,6 +49,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        {/* <Login /> */}
         <Layout title={name}>
           <Outlet />
         </Layout>
