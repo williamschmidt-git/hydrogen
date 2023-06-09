@@ -49,10 +49,10 @@ export default function App() {
         <Links />
       </head>
       <body>
-        {/* <Login /> */}
-        <Layout title={name}>
+        <Login />
+        {/* <Layout title={name}>
           <Outlet />
-        </Layout>
+        </Layout> */}
         <ScrollRestoration />
         <Scripts />
       </body>
