@@ -1,6 +1,7 @@
 import {type LinksFunction, type LoaderArgs} from '@shopify/remix-oxygen';
 import {
   Links,
+  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -11,8 +12,8 @@ import type {Shop} from '@shopify/hydrogen/storefront-api-types';
 import styles from './styles/app.css';
 import tailwind from './styles/tailwind-build.css';
 import favicon from '../public/favicon.svg';
-import {Layout} from './components/Layout';
-import Login from './components/LoginPage';
+// import {Layout} from './components/Layout';
+// import Login from './components/LoginPage';
 
 export const links: LinksFunction = () => {
   return [
@@ -49,10 +50,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Login />
+        {/* <Login /> */}
         {/* <Layout title={name}>
           <Outlet />
         </Layout> */}
+        <Outlet />
+        {/* <LiveReload /> */}
         <ScrollRestoration />
         <Scripts />
       </body>
