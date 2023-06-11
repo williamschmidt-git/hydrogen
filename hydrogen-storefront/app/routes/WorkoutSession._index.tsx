@@ -1,4 +1,4 @@
-import {useLoaderData, useFetcher} from '@remix-run/react';
+import {useLoaderData, useNavigate} from '@remix-run/react';
 import {redirect, type ActionArgs} from '@shopify/remix-oxygen';
 import {useEffect, useState} from 'react';
 import {workoutRequests} from '~/requests/workouts';
@@ -9,12 +9,34 @@ export const loader = async () => {
   return response;
 };
 
-export const action = async ({request}: ActionArgs) => {};
+export const action = async () => {
+  return redirect('/reps');
+};
 
 export default function WorkoutSession() {
-  const [index, setIndex] = useState(0);
   const {workouts}: any = useLoaderData<typeof loader>();
-  const [data, setData] = useState<any[]>(workouts);
+  const [index, setIndex] = useState(0);
+  const [data, setData] = useState<any[]>([workouts[index]]);
+
+  const navigate = useNavigate();
+
+  const nextData = () => {
+    if (!(index === data.length)) {
+      setData([workouts[index + 1]]);
+      setIndex(index + 1);
+    } else {
+      console.log('acabaram os exercícios');
+    }
+  };
+
+  const backData = () => {
+    if (index > 0) {
+      setData([workouts[index - 1]]);
+      setIndex(index - 1);
+    } else {
+      console.log('indice menor que zero');
+    }
+  };
 
   return (
     <>
@@ -39,11 +61,34 @@ export default function WorkoutSession() {
                   {e.workout_type}
                 </h4>
                 <p className="text-sm text-gray-600">{e.how_to_perform}</p>
+                <div className="flex items-center justify-center">
+                  <button
+                    className="text-white bg-purple-800 font-medium rounded-lg text-sm px-5 py-3.5 mt-2 text-center"
+                    onClick={backData}
+                  >
+                    Back
+                  </button>
+
+                  <button
+                    className="text-white w-32 bg-purple-800 font-medium rounded-lg text-sm mx-2 px-5 py-3.5 mt-2 text-center p-3"
+                    type="button"
+                    onClick={() => navigate('/restTimer')}
+                  >
+                    Rest
+                  </button>
+
+                  <button
+                    onClick={nextData}
+                    className="text-white bg-purple-800 font-medium rounded-lg text-sm px-5 py-3.5 mt-2 text-center p-3"
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
             );
           })}
         </section>
-        <button className=" text-white bg-purple-800 font-medium rounded-lg text-sm px-5 py-3.5 mt-2 text-center">
+        <button className="text-white bg-purple-800 font-medium rounded-lg text-sm px-5 py-3.5 mt-2 text-center">
           Finish workout
         </button>
       </div>

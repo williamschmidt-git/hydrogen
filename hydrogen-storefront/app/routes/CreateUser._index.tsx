@@ -1,13 +1,21 @@
-import {Form} from '@remix-run/react';
+import {redirect, type ActionArgs} from '@shopify/remix-oxygen';
+import {createUserRequest} from '~/requests/user';
 
-export default function CreateUser() {
-  async function handleSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const username = formData.get('username');
-    const password = formData.get('password');
+export const action = async ({request}: ActionArgs) => {
+  const form = await request.formData();
+  const username = form.get('username');
+  const password = form.get('password');
+
+  const response = await createUserRequest(username, password);
+
+  if (response.token) {
+    return redirect('/workouts');
   }
 
+  return redirect('/createUser');
+};
+
+export default function CreateUser() {
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <h1 className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"'>
@@ -19,9 +27,9 @@ export default function CreateUser() {
           <h2 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
             Create an account
           </h2>
-          <Form
+          <form
             method="post"
-            onSubmit={handleSubmit}
+            // onSubmit={handleSubmit}
             className="space-y-4 md:space-y-6"
           >
             <label
@@ -61,13 +69,13 @@ export default function CreateUser() {
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Already have an account?
               <a
-                href="http://localhost:3000/Login"
+                href="/Login"
                 className="font-medium text-purple-600 hover:underline dark:text-purple-500"
               >
                 Login here
               </a>
             </p>
-          </Form>
+          </form>
         </div>
       </div>
     </div>
