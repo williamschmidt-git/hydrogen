@@ -18,8 +18,6 @@ export const action = async ({request}: ActionArgs) => {
     return redirect('/workouts');
   }
 
-  // redirect('/workouts');
-
   return redirect('/login');
 };
 
@@ -68,7 +66,6 @@ export default function LoginIndexPage() {
           <form
             action="?index"
             className="space-y-4 md:space-y-6"
-            // onSubmit={handleSubmit}
             method="post"
           >
             <div>
@@ -114,7 +111,7 @@ export default function LoginIndexPage() {
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Dont have an account yet?
               <a
-                href="#"
+                href="http://localhost:3000/CreateUser"
                 className="font-medium text-purple-600 hover:underline dark:text-purple-500"
               >
                 Sign up
