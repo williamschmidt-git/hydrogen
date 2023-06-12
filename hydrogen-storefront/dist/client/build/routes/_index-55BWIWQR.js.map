@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../app/routes/_index.tsx"],
+  "sourcesContent": ["import {useLoaderData} from '@remix-run/react';\n\nexport function meta() {\n  return [\n    {title: 'Hydrogen'},\n    {description: 'A custom storefront powered by Hydrogen'},\n  ];\n}\n\nexport async function loader({context}) {\n  return await context.storefront.query(COLLECTIONS_QUERY);\n  // const response = await fetch('http://localhost:3001/user/create', {\n  //   method: 'POST',\n  //   // eslint-disable-next-line @typescript-eslint/naming-convention\n  //   headers: {'Content-type': 'application/json; charset=UTF-8'},\n  //   body: JSON.stringify({\n  //     username: 'username',\n  //     password: 'password',\n  //   }),\n  // });\n  // console.log(response);\n  // return null;\n}\n\nexport default function Index() {\n  const {collections}: any = useLoaderData();\n  console.log(collections);\n\n  return <p>Hello from the home page!</p>;\n}\n\nconst COLLECTIONS_QUERY = `#graphql\n  query FeaturedCollections {\n    collections(first: 3, query: \"collection_type:smart\") {\n      nodes {\n        id\n        title\n        handle\n      }\n    }\n  }\n`;\n"],
+  "mappings": ";;;;;;;;;;;AA4BS;AA1BF,SAAS,OAAO;AACrB,SAAO;AAAA,IACL,EAAC,OAAO,WAAU;AAAA,IAClB,EAAC,aAAa,0CAAyC;AAAA,EACzD;AACF;AAiBe,SAAR,QAAyB;AAC9B,QAAM,EAAC,YAAW,IAAS,cAAc;AACzC,UAAQ,IAAI,WAAW;AAEvB,SAAO,mDAAC,OAAE,yCAAH;AAAA;AAAA;AAAA;AAAA,SAA4B;AACrC;",
+  "names": []
+}
