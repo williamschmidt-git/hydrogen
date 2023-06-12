@@ -50,7 +50,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-
         <Outlet />
         {/* <LiveReload /> */}
         <ScrollRestoration />
