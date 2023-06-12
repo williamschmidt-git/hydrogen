@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../app/routes/Login.tsx"],
-  "sourcesContent": ["import {Outlet, useLoaderData} from '@remix-run/react';\n// import LoginPage from '~/components/LoginPage';\n\n// export const loader = async () => {\n//   // const response = await fetch('http://localhost:3001/user/create', {\n//   //   method: 'POST',\n//   //   // eslint-disable-next-line @typescript-eslint/naming-convention\n//   //   headers: {'Content-type': 'application/json; charset=UTF-8'},\n//   //   body: JSON.stringify({\n//   //     username: 'username',\n//   //     password: 'password',\n//   //   }),\n//   // });\n// };\n\nexport default function LoginRoute() {\n  // const data = useLoaderData<typeof loader>();\n  return (\n    <div>\n      <main>\n        <Outlet />\n      </main>\n    </div>\n  );\n}\n"],
-  "mappings": ";;;;;;;;;;;AAoBQ;AALO,SAAR,aAA8B;AAEnC,SACE,mDAAC,SACC,6DAAC,UACC,6DAAC,YAAD;AAAA;AAAA;AAAA;AAAA,SAAQ,KADV;AAAA;AAAA;AAAA;AAAA,SAEA,KAHF;AAAA;AAAA;AAAA;AAAA,SAIA;AAEJ;",
-  "names": []
-}
