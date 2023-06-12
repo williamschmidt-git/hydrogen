@@ -50,10 +50,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        {/* <Login /> */}
-        {/* <Layout title={name}>
-          <Outlet />
-        </Layout> */}
+
         <Outlet />
         {/* <LiveReload /> */}
         <ScrollRestoration />
