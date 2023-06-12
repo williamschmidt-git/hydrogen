@@ -9,9 +9,6 @@ import {
   type Session,
 } from '@shopify/remix-oxygen';
 
-/**
- * Export a fetch handler in module format.
- */
 export default {
   async fetch(
     request: Request,
